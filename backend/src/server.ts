@@ -1,36 +1,33 @@
-import express, { Application, Request, Response, NextFunction } from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import morgan from 'morgan';
+import mongoose from 'mongoose';
 
-// Load environment variables
-dotenv.config();
+import config from './config/config';
+import { Server } from 'http';
+import app from './app/app';
 
-const app: Application = express();
-const PORT = process.env.PORT || 5000;
+let server: Server;
 
-// Middlewares
-app.use(cors());
-app.use(express.json());
-app.use(morgan('dev'));
+async function main() {
+  try {
+    await mongoose.connect(config.url as string);
+    console.log('-------connected to db---------');
+    server = app.listen(config.port, () => console.log(`Running on port ${config.port}`));
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-// Sample route
-app.get('/', (req: Request, res: Response) => {
-  res.json({ message: 'Change in response v2 ✅', status: res.status });
+main();
+
+process.once('unhandledRejection', (reason: any) => {
+  console.error('😈 unhandledRejection detected:', reason);
+  if (server) {
+    server.close(() => process.exit(1));
+  } else {
+    process.exit(1);
+  }
 });
 
-// 404 Handler
-app.use((req: Request, res: Response) => {
-  res.status(404).json({ error: 'Route not found' });
-});
-
-// Global error handler
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.error(err.stack);
-  res.status(500).json({ error: 'Internal server error' });
-});
-
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server is running on http://localhost:${PORT}`);
+process.on('uncaughtException', (err) => {
+  console.error('🧨 uncaughtException detected:', err);
+  process.exit(1);
 });

@@ -1,7 +1,6 @@
 
 echo ""
-echo "🚀✨ Remember to write a great commit message✨✨✨ "
-echo "  ✨ Running eslint and prettier checks...........🚀🚀🚀"
+echo "🚀✨ Remember to write a great commit message✨✨✨"
 echo ""
 
 # Always succeed so commit is not blocked
