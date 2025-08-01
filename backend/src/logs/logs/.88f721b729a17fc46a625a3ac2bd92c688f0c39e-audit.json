@@ -1,15 +1,15 @@
 {
-    "keep": {
-        "days": true,
-        "amount": 7
-    },
-    "auditLog": "C:\\Users\\user\\Music\\Grid Mart\\backend\\src\\logs\\logs\\.88f721b729a17fc46a625a3ac2bd92c688f0c39e-audit.json",
-    "files": [
-        {
-            "date": 1754063525531,
-            "name": "C:\\Users\\user\\Music\\Grid Mart\\backend\\src\\logs\\logs\\app-2025-08-01.log",
-            "hash": "a49a83dbc68c2d15df984c4de1fdb09d1b1e20c1c9a19b92e84d5e9e2cd31b75"
-        }
-    ],
-    "hashType": "sha256"
+  "keep": {
+    "days": true,
+    "amount": 7
+  },
+  "auditLog": "C:\\Users\\user\\Music\\Grid Mart\\backend\\src\\logs\\logs\\.88f721b729a17fc46a625a3ac2bd92c688f0c39e-audit.json",
+  "files": [
+    {
+      "date": 1754063525531,
+      "name": "C:\\Users\\user\\Music\\Grid Mart\\backend\\src\\logs\\logs\\app-2025-08-01.log",
+      "hash": "a49a83dbc68c2d15df984c4de1fdb09d1b1e20c1c9a19b92e84d5e9e2cd31b75"
+    }
+  ],
+  "hashType": "sha256"
 }
