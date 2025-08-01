@@ -1,0 +1,33 @@
+{
+  "name": "grid-mart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snigbar/GridMart.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/snigbar/GridMart/issues"
+  },
+  "homepage": "https://github.com/snigbar/GridMart#readme",
+  "dependencies": {
+    "husky": "^9.1.7"
+  },
+  "lint-staged": {
+    "frontend/**/*.{js,ts,jsx,tsx}": [
+      "cd dashboard && npm run lint"
+    ],
+    "backend/src/**/*.ts": [
+      "cd backend && npm run lint",
+      "cd backend && npm run format"
+    ]
+  }
+}

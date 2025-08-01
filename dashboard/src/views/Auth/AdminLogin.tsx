@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ControlledInput } from "../../components/inputs/ControlledInput";
 import { ElavatedButton } from "../../components/Buttons/ElavatedButton";
+import { useAppDispatch } from "../../store/hooks/hooks";
+import { adminLogin } from "../../store/Reducers/Auth.Reducer";
 
 const adminLoginSchema = z.object({
   email: z.email("Please Enter Your Email Address"),
@@ -28,9 +30,11 @@ export default function AdminLogin() {
     resolver: zodResolver(adminLoginSchema),
   });
 
+  const dispatch = useAppDispatch();
   const onSubmit = (data: TAdminLoginFormData) => {
     console.log("Admin login data:", data);
     // Add your admin login logic here
+    dispatch(adminLogin(data));
   };
 
   return (

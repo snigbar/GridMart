@@ -1,0 +1,28 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "sourceType": "module"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["@typescript-eslint", "prettier"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-unused-vars": "error",
+    "prefer-const": "error",
+    "no-unused-expressions": "error",
+    "no-console": "warn",
+    "no-undef": "error"
+  },
+  "env": {
+    "node": true,
+    "es2020": true
+  },
+  "globals": {
+    "process": "readonly"
+  }
+}
