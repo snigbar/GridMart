@@ -16,7 +16,7 @@ app.use(morgan('dev'));
 
 // Sample route
 app.get('/', (req: Request, res: Response) => {
-  res.json({ message: 'Change in response ✅', status: res.status });
+  res.json({ message: 'Change in response v2 ✅', status: res.status });
 });
 
 // 404 Handler
