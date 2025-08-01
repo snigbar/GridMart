@@ -16,7 +16,7 @@ app.use(morgan('dev'));
 
 // Sample route
 app.get('/', (req: Request, res: Response) => {
-  res.json({ message: 'API is running ✅' });
+  res.json({ message: 'API is running ✅', status: res.status });
 });
 
 // 404 Handler

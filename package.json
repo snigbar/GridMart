@@ -4,11 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky",
+    "lint:backend": "cd backend && npm run lint",
+    "format:backend": "cd backend && npm run format",
+    "lint:dashboard": "cd dashboard && npm run lint"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/snigbar/GridMart.git"
+  },
+  "lint-staged": {
+    "backend/src/**/*.ts": [
+      "npm run lint:backend",
+      "npm run format:backend"
+    ],
+    "dashboard/**/*.{js,ts,jsx,tsx}": [
+      "npm run lint:dashboard"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -18,16 +31,8 @@
     "url": "https://github.com/snigbar/GridMart/issues"
   },
   "homepage": "https://github.com/snigbar/GridMart#readme",
-  "dependencies": {
-    "husky": "^9.1.7"
-  },
-  "lint-staged": {
-    "frontend/**/*.{js,ts,jsx,tsx}": [
-      "cd dashboard && npm run lint"
-    ],
-    "backend/src/**/*.ts": [
-      "cd backend && npm run lint",
-      "cd backend && npm run format"
-    ]
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2"
   }
 }
