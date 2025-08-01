@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky",
     "lint:backend": "cd backend && npm run lint",
     "format:backend": "cd backend && npm run format",
-    "lint:dashboard": "cd dashboard && npm run lint"
+    "lint:dashboard": "cd dashboard && npm run lint",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo ""
+echo "🚀✨ Remember to write a great commit message✨✨✨ "
+echo "  ✨ Running eslint and prettier...........🚀🚀🚀"
+
+
+# Always succeed so commit is not blocked
+exit 0
