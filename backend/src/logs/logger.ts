@@ -5,7 +5,7 @@ import fs from 'fs';
 import path from 'path';
 
 // Log directory
-const logDir = path.join(__dirname, 'logs');
+const logDir = path.join(__dirname, 'AppLogs');
 
 // Ensure log dir exists
 if (!fs.existsSync(logDir)) {
@@ -63,6 +63,7 @@ fileTransport.on('new', (filename) => {
 const logger = winston.createLogger({
   level: 'info',
   transports: [
+    // turn on on prod mode to dump log
     fileTransport,
     new winston.transports.Console({
       format: winston.format.combine(

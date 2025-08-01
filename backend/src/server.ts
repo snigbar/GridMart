@@ -11,7 +11,7 @@ async function main() {
   try {
     await mongoose.connect(config.url as string);
     logger.info('Connected to DB');
-    server = app.listen(config.port, () => console.log(`Running on port ${config.port}`));
+    server = app.listen(config.port || 3000, () => console.log(`Running on port ${config.port}`));
     logger.info(`App is running on port ${config.port}`);
   } catch (error) {
     logger.error(error || 'Something Went wrong');
@@ -32,4 +32,9 @@ process.once('unhandledRejection', (reason: any) => {
 process.on('uncaughtException', (err) => {
   logger.error('🧨 uncaughtException detected:', { message: err.message, stack: err.stack });
   process.exit(1);
+});
+
+process.on('SIGINT', () => {
+  logger.warn('👋 Gracefully shutting down');
+  process.exit();
 });
