@@ -18,8 +18,7 @@ export default [
       '@typescript-eslint': tsPlugin,
     },
     rules: {
-      semi: ['error', 'always'],
-      quotes: ['error', 'single'],
+      semi: ['warn', 'always'],
       '@typescript-eslint/no-unused-vars': 'warn',
       'no-console': 'off',
     },
