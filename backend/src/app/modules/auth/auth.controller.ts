@@ -1,15 +1,24 @@
-import { Request, Response } from 'express';
+import httpStatus from 'http-status';
+import { NextFunction, Request, RequestHandler, Response } from 'express';
+import catchAsync from '../../../utils/CatchAsync';
+import sendResponse from '../../../utils/SendResponse';
+
+import authServices from './auth.services';
 
 class AuthController {
-  async login(req: Request, res: Response): Promise<void> {
-    try {
-      // Example logic
-      const user = { id: 1, name: 'Akbar' };
-      res.status(200).json({ message: 'Login successful', user });
-    } catch (error: unknown) {
-      res.status(500).json({ message: 'Internal Server Error', error });
-    }
-  }
+  login: RequestHandler = catchAsync(async (req, res, next) => {
+    // TODO: implement login
+  });
+
+  register: RequestHandler = catchAsync(async (req, res, next) => {
+    const user = await authServices.RegisterUser(req, res);
+    sendResponse(res, {
+      success: true,
+      statusCode: httpStatus.CREATED,
+      message: 'Please Verify Your Email Address',
+      data: user,
+    });
+  });
 }
 
 export default new AuthController();

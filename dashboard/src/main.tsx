@@ -12,7 +12,7 @@ createRoot(document.getElementById("root")!).render(
     <Provider store={store}>
       <BrowserRouter>
         <App />
-        <ToastContainer position="bottom-right" />
+        <ToastContainer position="bottom-right" className="max-w-48" />
       </BrowserRouter>
     </Provider>
   </StrictMode>

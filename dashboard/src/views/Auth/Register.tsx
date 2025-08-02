@@ -5,6 +5,9 @@ import { ControlledInput } from "../../components/inputs/ControlledInput";
 import { Link } from "react-router-dom";
 import { ElavatedButton } from "../../components/Buttons/ElavatedButton";
 
+import { registerUser } from "../../store/Reducers/Auth.Reducer";
+import { useAppDispatch } from "../../store/hooks/hooks";
+
 const formSchema = z
   .object({
     name: z.string().min(2, "Name must be at least 2 characters."),
@@ -30,18 +33,29 @@ const formSchema = z
     }
   );
 
-export type TLoginFormData = z.infer<typeof formSchema>;
+export type TRegisterFormData = z.infer<typeof formSchema>;
 
 export default function Register() {
   const {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<TLoginFormData>({
+    reset,
+  } = useForm<TRegisterFormData>({
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = (data: TLoginFormData) => {
+  const dispatch = useAppDispatch();
+
+  const onSubmit = async (data: TRegisterFormData) => {
+    const result = await dispatch(registerUser(data));
+
+    console.log("Dispatch resutl----------", result);
+
+    if (registerUser.fulfilled.match(result)) {
+      reset(); // 🎉 Clears all fields
+    }
+
     console.log("Form submitted:", data);
   };
 

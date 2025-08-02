@@ -64,7 +64,7 @@ const logger = winston.createLogger({
   level: 'info',
   transports: [
     // turn on on prod mode to dump log
-    fileTransport,
+    // fileTransport,
     new winston.transports.Console({
       format: winston.format.combine(
         winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
