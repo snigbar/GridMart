@@ -9,6 +9,7 @@ export type TUser = {
   role: 'admin' | 'seller' | 'user';
   status: 'active' | 'in-progress' | 'blocked';
   isDeleted: boolean;
+  isVerified: boolean;
   passwordChangedAt?: Date;
   needPasswordChange: boolean;
 };

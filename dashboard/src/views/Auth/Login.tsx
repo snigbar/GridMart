@@ -34,9 +34,9 @@ export default function Login() {
   };
 
   return (
-    <div className="h-screen bg-bg-gradient flex justify-center items-center">
-      <div className="w-[356px] md:w-[480px] text-black rounded-lg">
-        <div className="bg-[#f4f4f4] py-8 px-6 text-center shadow-sm mb-3 border-t border-l border-r-2 border-b-2 border-black">
+    <div className="h-screen bg-auth-background bg-center flex justify-center items-center bg-no-repeat bg-cover">
+      <div className="w-[356px] md:w-[480px] 2xl:w-[560px] text-black rounded-lg">
+        <div className="bg-gray-100 py-8 px-6 text-center shadow-sm mb-3 border-t border-l border-r-2 border-b-2 border-black">
           <h2 className="text-2xl font-bold">Welcome Back to GridMart</h2>
           <p className="text-sm my-2 font-medium">
             Please login to your account

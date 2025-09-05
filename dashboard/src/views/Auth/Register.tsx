@@ -2,15 +2,18 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ControlledInput } from "../../components/inputs/ControlledInput";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ElavatedButton } from "../../components/Buttons/ElavatedButton";
 
 import { registerUser } from "../../store/Reducers/Auth.Reducer";
-import { useAppDispatch } from "../../store/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks/hooks";
+import { toast } from "react-toastify";
 
 const formSchema = z
   .object({
-    name: z.string().min(2, "Name must be at least 2 characters."),
+    name: z
+      .string("Please Provide your name")
+      .min(2, "Name must be at least 2 characters."),
     email: z.email("Invalid email address."),
     password: z
       .string("Please Enter Password")
@@ -43,29 +46,48 @@ export default function Register() {
     reset,
   } = useForm<TRegisterFormData>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
   });
 
+  const navigate = useNavigate();
+
   const dispatch = useAppDispatch();
+  const authdata = useAppSelector((state) => state.auth);
 
   const onSubmit = async (data: TRegisterFormData) => {
+    if (authdata.loading) return;
     const result = await dispatch(registerUser(data));
 
-    console.log("Dispatch resutl----------", result);
-
     if (registerUser.fulfilled.match(result)) {
-      reset(); // 🎉 Clears all fields
+      toast.success("Please Check Your Email");
+      reset();
+      setTimeout(() => navigate("/login", { replace: true }), 5000);
     }
-
-    console.log("Form submitted:", data);
+    if (registerUser.rejected.match(result)) {
+      toast.error("Registration failed: " + result.payload);
+    }
   };
 
   return (
-    <div className="h-screen bg-bg-gradient flex justify-center items-center">
-      <div className="w-[356px] md:w-[480px] text-black rounded-lg">
-        <div className="bg-[#f4f4f4] py-8 px-6 text-center shadow-sm mb-3 border-t border-l border-r-2 border-b-2  border-black">
-          <h2 className="text-2xl font-bold">Wellcome to GridMart</h2>
+    <div className="h-screen flex justify-center items-center bg-auth-background bg-center bg-no-repeat bg-cover">
+      <div className="w-[356px] md:w-[480px] 2xl:w-[560px] text-black rounded-lg">
+        <div className="bg-gray-100 py-8 px-6 text-center shadow-sm mb-3 border-t border-l border-r-2 border-b-2  border-black">
+          <h2 className="text-2xl font-bold">Welcome to GridMart</h2>
           <p className="text-sm my-2 font-medium">
             Please Register To Your Account
+          </p>
+
+          <p
+            className={`my-4 ${
+              authdata.errorMessage ? "text-rose-400" : "text-black"
+            } text-sm font-semibold`}
+          >
+            {authdata.successMessage || authdata.errorMessage || ""}
           </p>
 
           {/* form */}
@@ -105,7 +127,7 @@ export default function Register() {
                 Login
               </Link>
             </p>
-            <ElavatedButton children="Register" />
+            <ElavatedButton children="Register" disabled={authdata.loading} />
           </form>
         </div>
       </div>

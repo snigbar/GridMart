@@ -38,9 +38,9 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="h-screen bg-bg-gradient flex justify-center items-center">
-      <div className="w-[356px] md:w-[480px] text-black rounded-lg">
-        <div className="bg-[#f4f4f4] py-8 px-6 text-center shadow-sm mb-3 border-t border-l border-r-2 border-b-2 border-black">
+    <div className="h-screen flex justify-center items-center bg-auth-background bg-center bg-no-repeat bg-cover">
+      <div className="w-[356px] md:w-[480px] 2xl:w-[560px] text-black rounded-lg bg-gray-100">
+        <div className="py-8 px-6 text-center shadow-sm mb-3 border-t border-l border-r-2 border-b-2 border-black">
           <h2 className="text-2xl font-bold">Admin Panel Login</h2>
           <p className="text-sm my-2 font-medium">
             Please login with your admin credentials

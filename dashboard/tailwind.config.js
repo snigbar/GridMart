@@ -5,6 +5,7 @@ export default {
     extend: {
       backgroundImage: {
         "bg-gradient": "linear-gradient(135deg, #fbeae3, #f8d7cc)",
+        "auth-background": "url('./src/assets/backgrounds/authbg.png')",
       },
     },
   },

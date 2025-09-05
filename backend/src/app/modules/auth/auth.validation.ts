@@ -1,4 +1,4 @@
-import z, { email } from 'zod';
+import z from 'zod';
 
 const registerValidationSchema = z.object({
   body: z.object({
@@ -15,6 +15,20 @@ const registerValidationSchema = z.object({
   }),
 });
 
+const verifyEmailValidationSchema = z.object({
+  body: z.object({
+    token: z.string('Token is required'),
+  }),
+});
+
+const reVerificationSchema = z.object({
+  body: z.object({
+    user: z.string('User ID is required'),
+  }),
+});
+
 export default {
   registerValidationSchema,
+  verifyEmailValidationSchema,
+  reVerificationSchema,
 };

@@ -15,4 +15,18 @@ authRouter.post(
   authController.register,
 );
 
+// verify email
+authRouter.post(
+  '/verify-email',
+  validateRequest(authValidation.verifyEmailValidationSchema),
+  authController.verifyEmail,
+);
+
+// reverify email
+authRouter.post(
+  '/reVerify-email',
+  validateRequest(authValidation.reVerificationSchema),
+  authController.reVerification,
+);
+
 export default authRouter;

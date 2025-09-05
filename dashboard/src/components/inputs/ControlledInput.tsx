@@ -30,7 +30,6 @@ export const ControlledInput = ({
         render={({ field }) => (
           <input
             {...field}
-            id={name}
             type={type}
             placeholder={placeholder}
             className={`w-full px-3 py-2 text-sm border rounded-md bg-transparent mb-0 ${
@@ -48,7 +47,7 @@ export const ControlledInput = ({
         </p>
       ) : (
         <p className="text-red-400 text-[6px] xl:text-xs font-bold text-left mt-1 opacity-0">
-          dfdfdffdf
+          d
         </p>
       )}
     </div>

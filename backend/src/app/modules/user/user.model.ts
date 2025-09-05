@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document, Types } from 'mongoose';
+import mongoose, { Schema, Types } from 'mongoose';
 import { TUser, TUserModel } from './user.interface';
 import { UserStatus } from './user.constants';
 import bcrypt from 'bcrypt';
@@ -39,6 +39,10 @@ const userSchema = new Schema<TUser, TUserModel>(
       default: 'active',
     },
     isDeleted: {
+      type: Boolean,
+      default: false,
+    },
+    isVerified: {
       type: Boolean,
       default: false,
     },

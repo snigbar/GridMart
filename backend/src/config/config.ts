@@ -10,6 +10,7 @@ export default {
   enviroment: process.env.NODE_ENV,
   jwtAccessToken: process.env.JWT_ACCESS_TOKEN,
   jwtRefreshToken: process.env.JWT_REFRESH_TOKEN,
+  jwtEmailVerification: process.env.JWT_EMAIL_VERIFICATION,
   accessTokenExpiry: process.env.JWT_ACCESS_TOKEN_EXPIRE,
   refreshTokenExpiry: process.env.JWT_Refresh_TOKEN_EXPIRE,
   appPasswordMail: process.env.MAIL_PASSWORD,
